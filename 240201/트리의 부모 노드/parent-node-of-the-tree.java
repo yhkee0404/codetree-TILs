@@ -45,7 +45,7 @@ public class Main {
 
     public void solve() {
         this.parent[1] = 1;
-        dfs(1);
+        dfs(this.adj, this.parent, 1);
     }
 
     public void print() {
@@ -54,11 +54,11 @@ public class Main {
         }
     }
 
-    private void dfs(final int src) {
-        for (final int dest : this.adj.get(src)) {
-            if (this.parent[dest] == 0) {
-                this.parent[dest] = src;
-                dfs(dest);
+    private void dfs(final List<List<Integer>> adj, final int[] parent, final int src) {
+        for (final int dest : adj.get(src)) {
+            if (parent[dest] == 0) {
+                parent[dest] = src;
+                dfs(adj, parent, dest);
             }
         }
     }
