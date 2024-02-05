@@ -16,10 +16,10 @@ def solve(m, nodes):
     for s in ss:
         if visited[s]:
             continue
-        if root is not None:
+        if root is None:
+            root = s
+        if root != s:
             return False
-        root = s
-        visited[s] = True
     
     adj = [[] for _ in visited]
     for i in range(0, m << 1, 2):
