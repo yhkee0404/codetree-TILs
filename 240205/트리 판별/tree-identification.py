@@ -38,4 +38,4 @@ def solve(m, nodes):
             stack.append(v)
     return all(v for v in visited[1:])
 
-print(1 if solve(m, nodes) else -1)
+print(1 if solve(m, nodes) else 0)
