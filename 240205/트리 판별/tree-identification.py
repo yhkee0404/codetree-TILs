@@ -37,6 +37,6 @@ def solve(m, nodes):
                 return False
             visited[v] = True
             stack.append(v)
-    return all(v for v in visited[1:])
+    return all(visited[e] for e in es)
 
 print(1 if solve(m, nodes) else 0)
