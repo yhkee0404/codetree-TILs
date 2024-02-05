@@ -21,6 +21,8 @@ def solve(m, nodes):
             continue
         if root != s:
             return False
+    if root is None:
+        return False
     
     adj = [[] for _ in visited]
     for i in range(0, m << 1, 2):
