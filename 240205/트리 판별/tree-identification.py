@@ -18,6 +18,7 @@ def solve(m, nodes):
             continue
         if root is None:
             root = s
+            continue
         if root != s:
             return False
     
