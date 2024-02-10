@@ -1,21 +1,16 @@
 import sys
-from heapq import heappush, heappop
 
 write = sys.stdout.write
 
 def visit(adj, a, dist):
-    pq = [(0, a)]
-    while pq:
-        du, u = heappop(pq)
-        if du != dist[u]:
-            continue
-        for v, w in adj[u]:
-            dv = du + w
-            if dv < dist.get(v, 1_000_001):
-                dist[v] = dv
-                heappush(pq, (dv, v))
+    da = dist[a]
+    for b, w in adj[a]:
+        db = da + w
+        if db < dist.get(b, 999_001):
+            dist[b] = db
+            visit(adj, b, dist)
     return dist
-    
+
 with open(0) as f:
     n, m = map(int, f.readline().split())
     adj = [[] for _ in range(n + 1)]
