@@ -14,14 +14,12 @@ def solve(m, nodes):
     for e in es:
         visited[e] = True
     root = None
-    for s in ss:
+    for s in range(1, max_s + 1):
         if visited[s]:
             continue
-        if root is None:
-            root = s
-            continue
-        if root != s:
+        if root is not None:
             return False
+        root = s
     if root is None:
         return False
     
