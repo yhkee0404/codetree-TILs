@@ -5,9 +5,8 @@ write = sys.stdout.write
 def visit(adj, a, dist):
     da = dist[a]
     for b, w in adj[a]:
-        db = da + w
-        if db < dist.get(b, 999_001):
-            dist[b] = db
+        if b not in dist:
+            dist[b] = da + w
             visit(adj, b, dist)
     return dist
 
@@ -18,6 +17,7 @@ with open(0) as f:
         a, b, c = map(int, f.readline().split())
         adj[a].append((b, c))
         adj[b].append((a, c))
+    dist = [visit(adj, i, {i: 0}) for i in range(0, n + 1)]
     for _ in range(m):
         a, b = map(int, f.readline().split())
-        write(f'{visit(adj, a, {a: 0})[b]}\n')
+        write(f'{dist[a][b]}\n')
