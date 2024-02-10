@@ -8,18 +8,19 @@ def solve(m, nodes):
     max_s = max(s for s in ss)
     max_e = max(e for e in es)
     
-    visited = [True] * (max(max_s, max_e) + 1)
-    for s in ss:
-        visited[s] = False
+    visited = [False] * (max(max_s, max_e) + 1)
+    
     for e in es:
         visited[e] = True
     root = None
-    for s in range(1, max_s + 1):
+    for s in ss:
         if visited[s]:
             continue
-        if root is not None:
+        if root is None:
+            root = s
+            continue
+        if root != s:
             return False
-        root = s
     if root is None:
         return False
     
