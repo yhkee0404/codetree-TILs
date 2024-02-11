@@ -9,13 +9,15 @@ with open(0) as f:
         adj[b].append(a)
 
 sys.setrecursionlimit(max(10, n))
-depths = {1: 0}
+depths = [None] * (n + 1)
+depths[0] = 0
+depths[1] = 0
 
 def solve(v):
     visited = False
     dw = depths[v] + 1
     for w in adj[v]:
-        if w not in depths:
+        if depths[w] is None:
             depths[w] = dw
             solve(w)
             visited = True
@@ -23,4 +25,4 @@ def solve(v):
         depths[v] = 0
 
 solve(1)
-print(sum(depths.values()) & 1)
+print(sum(depths) & 1)
