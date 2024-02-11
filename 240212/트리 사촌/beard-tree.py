@@ -22,7 +22,9 @@ while i != n:
 
 ans = 0
 for ci in children:
-    if ci[0] <= src <= ci[-1]:
+    if ci[-1] > src:
+        break
+    if ci[0] <= src:
         ans = sum(
             len(children[u])
             for u in ci
