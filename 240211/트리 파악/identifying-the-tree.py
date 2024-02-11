@@ -12,7 +12,9 @@ depths = [None] * (n + 1)
 depths[0] = 0
 depths[1] = 0
 
+ans = 0
 def solve(v):
+    global ans
     visited = False
     dw = depths[v] + 1
     for w in adj[v]:
@@ -20,8 +22,8 @@ def solve(v):
             depths[w] = dw
             solve(w)
             visited = True
-    if visited:
-        depths[v] = 0
+    if not visited:
+        ans += depths[v]
 
 solve(1)
-print(sum(depths) & 1)
+print(ans & 1)
