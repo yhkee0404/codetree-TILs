@@ -16,7 +16,7 @@ depths[1] = 0
 
 ans = 0
 def solve(v):
-    global ans
+    # global ans
     visited = False
     dw = depths[v] + 1
     for w in adj[v]:
@@ -26,8 +26,8 @@ def solve(v):
             visited = True
     if visited:
         depths[v] = 0
-    else:
-        ans += depths[v]
+    # else:
+    #     ans += depths[v]
 
 solve(1)
 ans = 0
