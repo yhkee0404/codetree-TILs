@@ -9,8 +9,9 @@ with open(0) as f:
         adj[b].append(a)
 
 sys.setrecursionlimit(n + 10)
+visited = set()
 
-def solve(v, depth = 0, visited = set()):
+def solve(v, depth = 0):
     visited.add(v)
     depth += 1
     ans = 0
