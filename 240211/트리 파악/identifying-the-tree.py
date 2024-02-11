@@ -10,12 +10,12 @@ with open(0) as f:
 
 sys.setrecursionlimit(n + 10)
 
-def solve(adj, u, v, depth = 0):
+def solve(u, v, depth = 0):
     depth += 1
     ans = 0
     for w in adj[v]:
         if w != u:
-            ans += solve(adj, v, w, depth)
+            ans += solve(v, w, depth)
     return ans if ans else depth - 1
 
-print(solve(adj, -1, 1) & 1)
+print(solve(-1, 1) & 1)
