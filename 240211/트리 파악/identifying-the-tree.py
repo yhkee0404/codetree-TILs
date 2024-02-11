@@ -1,13 +1,12 @@
 import sys
 sys.setrecursionlimit(100000)
 
-with open(0) as f:
-    n = int(f.readline().strip())
-    adj = [[] for _ in range(n + 1)]
-    for _ in range(n - 1):
-        a, b = map(int, f.readline().split())
-        adj[a].append(b)
-        adj[b].append(a)
+n = int(input().strip())
+adj = [[] for _ in range(n + 1)]
+for _ in range(n - 1):
+    a, b = map(int, input().split())
+    adj[a].append(b)
+    adj[b].append(a)
 
 depths = [None] * (n + 1)
 depths[0] = 0
