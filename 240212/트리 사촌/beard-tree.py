@@ -3,7 +3,7 @@ with open(0) as f:
 
 children = []
 i = 1
-src = None
+src = 0
 while i != n:
     ci = [i]
     found = False
@@ -20,12 +20,13 @@ while i != n:
         src = len(children) - 1
     i = j
 
+ans = 0
 for ci in children:
     if ci[0] <= src <= ci[-1]:
+        ans = sum(
+            len(children[u])
+            for u in ci
+            if u != src and u < len(children)
+        )
         break
-ans = sum(
-    len(children[u])
-    for u in ci
-    if u != src and u < len(children)
-)
 print(ans)
