@@ -16,7 +16,7 @@ depths[1] = 0
 
 ans = 0
 def solve(v):
-    # global ans
+    global ans
     visited = False
     dw = depths[v] + 1
     for w in adj[v]:
