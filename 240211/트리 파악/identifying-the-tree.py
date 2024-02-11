@@ -8,12 +8,11 @@ with open(0) as f:
 
 def solve(adj, u, v, depth = 0):
     depth += 1
-    if len(adj[v]) == 1:
-        return depth
-    return sum(
+    ans = sum(
         solve(adj, v, w, depth)
         for w in adj[v]
         if w != u
     )
+    return ans if ans else depth - 1
 
 print(solve(adj, -1, 1) & 1)
