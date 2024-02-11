@@ -26,5 +26,7 @@ def solve(v):
         depths[v] = 0
 
 solve(1)
-ans = sum(d for d in depths if d)
+ans = 0
+for d in depths:
+    ans += d
 print(ans & 1)
