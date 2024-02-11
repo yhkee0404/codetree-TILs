@@ -10,12 +10,14 @@ with open(0) as f:
 
 sys.setrecursionlimit(n + 10)
 
-def solve(u, v, depth = 0):
+def solve(v, depth = 0, visited = set()):
+    visited.add(v)
     depth += 1
     ans = 0
     for w in adj[v]:
-        if w != u:
-            ans += solve(v, w, depth)
+        if w not in visited:
+            ans += solve(w, depth)
+    visited.remove(v)
     return ans if ans else depth - 1
 
-print(solve(-1, 1) & 1)
+print(solve(1) & 1)
