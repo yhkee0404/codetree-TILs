@@ -3,7 +3,7 @@ with open(0) as f:
 
 children = []
 i = 1
-src = None
+src = 0
 while i != n:
     ci = [i]
     found = False
@@ -21,15 +21,14 @@ while i != n:
     i = j
 
 ans = 0
-if src is not None:
-    for ci in children:
-        if ci[-1] < src:
-            continue
-        if ci[0] <= src:
-            ans = sum(
-                len(children[u])
-                for u in ci
-                if u != src and u < len(children)
-            )
-        break
+for ci in children:
+    if ci[-1] < src:
+        continue
+    if ci[0] <= src:
+        ans = sum(
+            len(children[u])
+            for u in ci
+            if u != src and u < len(children)
+        )
+    break
 print(ans)
