@@ -1,12 +1,14 @@
 import sys
-sys.setrecursionlimit(200000)
 
-n = int(input().strip())
-adj = [[] for _ in range(n + 1)]
-for _ in range(n - 1):
-    a, b = map(int, input().split())
-    adj[a].append(b)
-    adj[b].append(a)
+with open(0) as f:
+    n = int(f.readline().strip())
+    adj = [[] for _ in range(n + 1)]
+    for _ in range(n - 1):
+        a, b = map(int, f.readline().split())
+        adj[a].append(b)
+        adj[b].append(a)
+
+sys.setrecursionlimit(n + 10)
 
 depths = [None] * (n + 1)
 depths[0] = 0
@@ -24,5 +26,5 @@ def solve(v):
         depths[v] = 0
 
 solve(1)
-ans = sum(depths)
+ans = sum(d for d in depths if d)
 print(ans & 1)
