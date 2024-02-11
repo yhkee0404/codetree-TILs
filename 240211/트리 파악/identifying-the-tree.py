@@ -26,8 +26,8 @@ def solve(v):
             visited = True
     if visited:
         depths[v] = 0
-    # else:
-    #     ans += depths[v]
+    else:
+        ans += depths[v]
 
 solve(1)
 ans = 0
