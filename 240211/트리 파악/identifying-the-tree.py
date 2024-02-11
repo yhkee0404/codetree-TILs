@@ -8,7 +8,7 @@ with open(0) as f:
         adj[a].append(b)
         adj[b].append(a)
 
-sys.setrecursionlimit(n + 10)
+sys.setrecursionlimit(100_000)
 visited = set()
 
 def solve(v, depth = 0):
