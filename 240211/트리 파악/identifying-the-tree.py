@@ -27,6 +27,6 @@ def solve(v):
 
 solve(1)
 ans = 0
-for d in depths:
-    ans += d
+for i in range(n + 1):
+    ans += depths[i]
 print(ans & 1)
