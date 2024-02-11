@@ -7,9 +7,9 @@ with open(0) as f:
         adj[b].append(a)
 
 def solve(adj, u, v, depth = 0):
+    depth += 1
     if len(adj[v]) == 1:
         return depth
-    depth += 1
     return sum(
         solve(adj, v, w, depth)
         for w in adj[v]
