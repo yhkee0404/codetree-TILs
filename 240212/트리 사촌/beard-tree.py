@@ -26,6 +26,6 @@ for ci in children:
 ans = sum(
     len(children[u])
     for u in ci
-    if u != src
+    if u != src and u < len(children)
 )
 print(ans)
