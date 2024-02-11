@@ -24,11 +24,13 @@ def solve(v):
             depths[w] = dw
             solve(w)
             visited = True
-    if not visited:
+    if visited:
+        depths[v] = 0
+    else:
         ans += depths[v]
 
 solve(1)
-ans = 0
-for i in range(n + 1):
-    ans += depths[i]
+# ans = 0
+# for i in range(n + 1):
+#    ans += depths[i]
 print(ans & 1)
