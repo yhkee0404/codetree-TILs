@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(200000)
 
 n = int(input().strip())
 adj = [[] for _ in range(n + 1)]
