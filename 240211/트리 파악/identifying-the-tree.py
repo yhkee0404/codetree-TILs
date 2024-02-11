@@ -16,4 +16,4 @@ def solve(adj, u, v, depth = 0):
         if w != u
     )
 
-print(solve(adj, -1, 1) ^ 1)
+print(solve(adj, -1, 1) & 1)
