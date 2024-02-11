@@ -24,11 +24,11 @@ ans = 0
 for ci in children:
     if ci[0] > src:
         continue
-    if ci[-1] < src:
-        break
-    ans = sum(
-        len(children[u])
-        for u in ci
-        if u != src and u < len(children)
-    )
+    if ci[-1] >= src:
+        ans = sum(
+            len(children[u])
+            for u in ci
+            if u != src and u < len(children)
+        )
+    break
 print(ans)
