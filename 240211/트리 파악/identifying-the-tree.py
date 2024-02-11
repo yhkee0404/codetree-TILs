@@ -8,17 +8,16 @@ with open(0) as f:
         adj[a].append(b)
         adj[b].append(a)
 
-sys.setrecursionlimit(100_000)
-visited = set()
+sys.setrecursionlimit(n + 10)
+depths = {1: 0}
 
-def solve(v, depth = 0):
-    visited.add(v)
-    depth += 1
+def solve(v):
     ans = 0
+    dv = depths[v]
     for w in adj[v]:
-        if w not in visited:
-            ans += solve(w, depth)
-    visited.remove(v)
-    return ans if ans else depth - 1
+        if w not in depths:
+            depths[w] = dv + 1
+            ans += solve(w)
+    return ans if ans else dv
 
 print(solve(1) & 1)
