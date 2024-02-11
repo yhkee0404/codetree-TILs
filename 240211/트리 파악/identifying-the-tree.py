@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(100000)
 
 with open(0) as f:
     n = int(f.readline().strip())
@@ -8,7 +9,6 @@ with open(0) as f:
         adj[a].append(b)
         adj[b].append(a)
 
-sys.setrecursionlimit(max(10, n))
 depths = [None] * (n + 1)
 depths[0] = 0
 depths[1] = 0
