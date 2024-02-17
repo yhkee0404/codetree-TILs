@@ -5,7 +5,14 @@ with open(0) as f:
         t, a, p = map(int, f.readline().split())
         adj[p].append((i, a if t else - a))
 
+import sys
+sys.setrecursionlimit(n + 10)
+
 def dfs(adj, src):
-    return sum(max(0, a + dfs(adj, u)) for u, a in adj[src])
+    ans = 0
+    for u, a in adj[src]:
+        a += dfs(adj, u)
+        ans += max(0, a)
+    return ans
 
 print(dfs(adj, 1))
