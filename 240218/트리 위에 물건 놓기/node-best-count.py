@@ -9,23 +9,22 @@ with open(0) as f:
 import sys
 sys.setrecursionlimit(n + 10)
 
-def dfs(adj, visited, src, visit):
-    visited[src] = True
-    if visit:
-        ans = 1
-    else:
-        ans = 0
-    for v in adj[src]:
-        if visited[v]:
+def dfs(n, adj, dp, u, v, visit):
+    ans = dp[v][visit]
+    if ans != n:
+        return ans
+    ans = visit
+    for w in adj[v]:
+        if w == u:
             continue
-        a = dfs(adj, visited, v, True)
+        a = dfs(n, adj, dp, v, w, 1)
         if visit:
-            b = dfs(adj, visited, v, False)
+            b = dfs(n, adj, dp, v, w, 0)
             a = min(a, b)
         ans += a
-    visited[src] = False
+    dp[v][visit] = ans
     return ans
 
-visited = [False] * (n + 1)
+dp = [[n] * 2 for _ in range(n + 1)]
 adj[0].append(1)
-print(dfs(adj, visited, 0, True) - 1)
+print(dfs(n, adj, dp, -1, 0, 1) - 1)
