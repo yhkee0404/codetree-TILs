@@ -15,14 +15,17 @@ def dfs(adj, visited, src, visit):
         ans = 1
     else:
         ans = 0
-    visit ^= True
     for v in adj[src]:
         if visited[v]:
             continue
-        ans += dfs(adj, visited, v, visit)
+        a = dfs(adj, visited, v, True)
+        if visit:
+            b = dfs(adj, visited, v, False)
+            a = min(a, b)
+        ans += a
     visited[src] = False
     return ans
 
 visited = [False] * (n + 1)
-ans = dfs(adj, visited, 1, False)
-print(min(ans, n - ans))
+adj[0].append(1)
+print(dfs(adj, visited, 0, True) - 1)
