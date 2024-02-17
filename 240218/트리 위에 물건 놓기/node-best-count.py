@@ -24,4 +24,5 @@ def dfs(adj, visited, src, visit):
     return ans
 
 visited = [False] * (n + 1)
-print(min(dfs(adj, visited, 1, visit) for visit in (True, False)))
+ans = dfs(adj, visited, 1, False)
+print(min(ans, n - ans))
