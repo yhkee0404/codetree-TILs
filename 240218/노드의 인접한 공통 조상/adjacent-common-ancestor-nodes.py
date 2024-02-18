@@ -8,6 +8,9 @@ with open(0) as f:
         children[a].append(b)
     a, b = map(int, f.read().split())
 
+import sys
+sys.setrecursionlimit(n + 10)
+
 def find_root(n, parent):
     for i in range(1, n + 1):
         if parent[i] is None:
