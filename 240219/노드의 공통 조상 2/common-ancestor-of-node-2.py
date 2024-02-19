@@ -1,3 +1,5 @@
+from sys import setrecursionlimit as srl
+
 def init_parents(n, adj, parents, depths, src):
     du = depths[src] + 1
     for u in adj[src]:
@@ -50,6 +52,7 @@ def lca(parents, depths, a, b):
 
 with open(0) as f:
     n = int(f.readline().strip())
+    srl(n + 10)
     adj = [[] for _ in range(n + 1)]
     for _ in range(n - 1):
         a, b = map(int, f.readline().split())
