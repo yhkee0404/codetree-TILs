@@ -27,18 +27,17 @@ def lca(parents, depths, a, b):
     if diff < 0:
         a, b, da, db = b, a, db, da
         diff = - diff
-    i = 1
-    j = 0
+    i = 0
     while diff:
         if diff & 1:
-            diff -= i
-            a = parents[j][a]
-        i <<= 1
-        j += 1
+            a = parents[i][a]
+        i += 1
+        diff >>= 1
     if a == b:
         return a
-    i = 1 << 15
-    for pj in range(15, -1, -1):
+    i = 1 << 16
+    for j in range(15, -1, -1):
+        i >>= 1
         if i > db:
             continue
         pj = parents[j]
@@ -46,6 +45,7 @@ def lca(parents, depths, a, b):
             continue
         a = pj[a]
         b = pj[b]
+        db = depths[a]
     return parents[0][a]
 
 with open(0) as f:
