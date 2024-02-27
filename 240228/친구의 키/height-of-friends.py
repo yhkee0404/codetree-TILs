@@ -5,6 +5,9 @@ with open(0) as f:
         a, b = map(int, f.readline().split())
         adj[a].append(b)
 
+from sys import setrecursionlimit
+setrecursionlimit(n + 10)
+
 visited = [False] * (n + 1)
 def dfs(adj, visited, order, src):
     if visited[src]:
