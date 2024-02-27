@@ -19,6 +19,6 @@ while pq:
     for v, w in adj[u]:
         if w < dist[v]:
             dist[v] = w
-            pq.append((w, v))
+            heappush(pq, (w, v))
 
 print(- sum(dist) + 1_000_000_000 - 1)
