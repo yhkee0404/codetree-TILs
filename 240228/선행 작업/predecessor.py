@@ -10,6 +10,7 @@ adj = [[] for _ in range(n + 1)]
 for i in range(1, n + 1):
     for a in adj_t[i]:
         adj[a].append(i)
+    adj_t[i].append(0)
 
 q = []
 for i in range(1, n + 1):
@@ -20,7 +21,7 @@ head = 0
 while head != len(q):
     u = q[head]
     head += 1
-    dp[u] += max(0, 0, *(dp[v] for v in adj_t[u]),)
+    dp[u] += max(dp[v] for v in adj_t[u])
     for v in adj[u]:
         in_degrees[v] -= 1
         if not in_degrees[v]:
