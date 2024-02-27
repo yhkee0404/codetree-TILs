@@ -1,13 +1,10 @@
 with open(0) as f:
     n = int(f.readline().strip())
-    adj_t = [[]]
+    adj_t = [[]] * (n + 1)
     in_degrees = [None] * (n + 1)
     dp = [0] * (n + 1)
     for i in range(1, n + 1):
-        d, m, *a = map(int, f.readline().split())
-        adj_t.append(a)
-        in_degrees[i] = m
-        dp[i] = d
+        dp[i], in_degrees[i], *adj_t[i] = map(int, f.readline().split())
 
 adj = [[] for _ in range(n + 1)]
 for i in range(1, n + 1):
