@@ -9,7 +9,7 @@ with open(0) as f:
             case 'a':
                 bit |= 1 << int(args[0])
             case 'd':
-                bit &= ~ 1 << int(args[0])
+                bit &= ~ (1 << int(args[0]))
             case 'p':
                 ans.append('1' if bit & (1 << int(args[0])) else '0')
             case 't':
