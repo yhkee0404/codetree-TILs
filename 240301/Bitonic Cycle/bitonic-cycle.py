@@ -1,6 +1,6 @@
 with open(0) as f:
     n = int(f.readline().strip())
-    points = sorted(tuple(map(int, line.split())) for line in f.readlines())
+    points = sorted(tuple(map(int, f.readline().split())) for _ in range(n))
 
 def d(a, b):
     dx = a[0] - b[0]
