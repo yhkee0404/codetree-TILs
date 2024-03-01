@@ -22,5 +22,5 @@ for i in range(n - 1):
         k = max(i, j) + 1
         dp[i][k] = min(dp[i][k], dij + adj[j][k])
         dp[k][j] = min(dp[k][j], dij + adj[i][k])
-
-print(min(dp[i][n - 1] + adj[i][n - 1] for i in range(n - 2)))
+dp[-1][-1] = adj[-1][-1] = 0
+print(min(dp[i][-1] + adj[i][-1] for i in range(n - 1)))
