@@ -11,7 +11,7 @@ with open(0) as f:
             case 'd':
                 bit &= ~ 1 << int(args[0])
             case 'p':
-                ans.append('1' if bit & 1 << int(args[0]) else '0')
+                ans.append('1' if bit & (1 << int(args[0])) else '0')
             case 't':
                 bit ^= 1 << int(args[0])
             case 'c':
