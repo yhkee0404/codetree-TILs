@@ -3,7 +3,9 @@ with open(0) as f:
     points = sorted(tuple(map(int, line.split())) for line in f.readlines())
 
 def d(a, b):
-    return sum(map(lambda x: x * x, (a[i] - b[i] for i in range(len(a)))))
+    dx = a[0] - b[0]
+    dy = a[1] - b[1]
+    return dx * dx + dy * dy
 
 adj = [[None] * n for _ in range(n)]
 for i in range(n):
