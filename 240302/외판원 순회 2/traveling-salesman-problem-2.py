@@ -4,7 +4,8 @@ with open(0) as f:
 
 def visit(n, a, visited, k, dp):
     if visited + 1 == 1 << n:
-        return a[k][0]
+        ans = a[k][0]
+        return ans if ans else 1_000_000
     if dp[visited][k] is not None:
         return dp[visited][k]
     bit = 1
